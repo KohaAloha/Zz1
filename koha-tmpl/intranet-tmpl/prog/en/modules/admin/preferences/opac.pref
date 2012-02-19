@@ -516,6 +516,12 @@ OPAC:
                   no: "Don't allow"
                   yes: Allow
             - opac users to share private lists with other patrons. This feature is not active yet but will be released soon
+        -
+            - pref: BlockExpiredPatronOpacActions
+              choices:
+                yes: "Block"
+                no: "Don't block"
+            - expired patrons from opac actions such as placing a hold or renew, the setting for a patron category takes priority over this
 
     Privacy:
         -
