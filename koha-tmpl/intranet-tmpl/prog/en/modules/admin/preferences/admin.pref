@@ -113,3 +113,20 @@ Administration:
                 Solr: Solr
                 Zebra: Zebra
             - is the search engine used.
+    Usage Stats:
+        -
+            - pref: UsageStatsLastUpdateTime
+              default: 0
+            - stores the last time when cron were launch
+        -
+            - pref: UsageStatsID
+              default:
+            -
+        -
+            - pref: UsageStatsShare
+              default:
+            -
+        -
+            - pref: UsageStatsLibraryName
+              default:
+            -
