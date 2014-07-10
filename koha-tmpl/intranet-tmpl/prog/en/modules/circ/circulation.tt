@@ -1,3 +1,4 @@
+[% USE Koha %]
 [% USE Branches %]
 [% USE KohaDates %]
 [% IF Koha.Preference('ExportRemoveFields') OR Koha.Preference('ExportWithCsvProfile') %]
@@ -33,6 +34,7 @@ var borrowernumber = "[% borrowernumber %]";
 var branchcode = "[% branch %]";
 var exports_enabled = "[% exports_enabled %]";
 var AllowRenewalLimitOverride = [% (CAN_user_circulate_override_renewals && AllowRenewalLimitOverride)? 1: 0 %];
+var script = "circulation";
 var relatives_borrowernumbers = new Array();
 [% FOREACH b IN relatives_borrowernumbers %]
     relatives_borrowernumbers.push("[% b %]");
