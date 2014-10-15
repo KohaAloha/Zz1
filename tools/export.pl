@@ -197,6 +197,20 @@ if ( $op eq "export" ) {
         my $ending_authid   = $query->param('ending_authid');
         my $authtype        = $query->param('authtype');
 
+        my $filefh;
+        if ($commandline) {
+            open $filefh,"<", $id_list_file or die "cannot open $id_list_file: $!" if $id_list_file;
+        } else {
+            $filefh = $query->upload("id_list_file");
+        }
+        my %id_filter;
+        if ($filefh) {
+            while (my $number=<$filefh>){
+                $number=~s/[\r\n]*$//;
+                $id_filter{$number}=1 if $number=~/^\d+$/;
+            }
+        }
+
         if ( $record_type eq 'bibs' and not @biblionumbers ) {
             if ($timestamp) {
 
