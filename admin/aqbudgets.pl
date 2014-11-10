@@ -230,6 +230,10 @@ if ($op eq 'add_form') {
                                                     # END $OP eq DELETE_CONFIRM
 # called by delete_confirm, used to effectively confirm deletion of data in DB
 } elsif ( $op eq 'delete_confirmed' ) {
+    if ( BudgetHasChildren( $budget_id ) ) {
+        # We should never be here, the interface does not provide this action.
+        die("Delete a fund with children is not possible");
+    }
     my $rc = DelBudget($budget_id);
     $op = 'list';
 } elsif( $op eq 'add_validate' ) {
@@ -335,6 +339,8 @@ if ( $op eq 'list' ) {
 
         $budget->{branchname} = $branches->{ $budget->{branchcode} }->{branchname};
         $budget->{budget_hierarchy} = \@budget_hierarchy;
+
+        $budget->{budget_has_children} = BudgetHasChildren( $budget->{budget_id} );
     }
 
     my $budget_period_total = $period->{budget_period_total};
