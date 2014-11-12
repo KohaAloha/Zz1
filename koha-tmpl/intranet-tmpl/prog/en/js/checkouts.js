@@ -316,7 +316,11 @@ $(document).ready(function() {
                         }
 
                         content += "<span class='" + span_class + "' style='" + span_style + "'>"
-                                +  "<input type='checkbox' class='renew' id='renew_" + oObj.itemnumber + "' name='renew' value='" + oObj.itemnumber +"'/>"
+                                    +  "<input type='checkbox' ";
+                            if ( oObj.date_due_overdue ) {
+                                content += "checked='checked' ";
+                            }
+                            content += "class='renew' id='renew_" + oObj.itemnumber + "' name='renew' value='" + oObj.itemnumber +"'/>"
                                 +  "</span>";
 
                         if ( oObj.renewals_remaining ) {
