@@ -570,8 +570,6 @@ $template->param(itemtable_colspan => $itemTableColspan);
 
 # display infos
 $template->param(bibitemloop => $biblioLoop);
-$template->param( showholds=>$show_holds_count);
-$template->param( showpriority=>$show_priority);
 # can set reserve date in future
 if (
     C4::Context->preference( 'AllowHoldDateInFuture' ) &&
